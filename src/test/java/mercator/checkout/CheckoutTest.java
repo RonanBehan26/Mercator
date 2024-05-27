@@ -22,6 +22,14 @@ class CheckoutTest {
         assertEquals(expectedTotalPrice, checkout.costOfFruit(input));
     }
 
+    // Test case to verify the total cost calculation with a mix of apples, oranges and bananas
+    @Test
+    public void testCostOfFruitWithApplesOrangesAndBananas(){
+        String[] input = {"Apple", "Apple", "Orange", "Orange", "Orange", "Bananas", "Bananas"};
+        double expectedTotalPrice = 1.10;
+        assertEquals(expectedTotalPrice, checkout.costOfFruit(input));
+    }
+
     // Test case to verify the total cost calculation, just apples
     @Test
     public void testCostOfFruitWithApplesOnly(){
@@ -35,6 +43,14 @@ class CheckoutTest {
     public void testCostOfFruitWithOrangesOnly(){
         String[] input = {"Orange", "Orange", "Orange", "Orange", "Orange", "Orange"};
         double expectedTotalPrice = checkout.getOrangePrice()*4;
+        assertEquals(expectedTotalPrice, checkout.costOfFruit(input));
+    }
+
+    // Test case to verify the total cost calculation, just bananas
+    @Test
+    public void testCostOfFruitWithBananasOnly(){
+        String[] input = {"Banana", "Banana", "Banana", "Banana", "Banana", "Banana", "Banana"};
+        double expectedTotalPrice = 0.8; // Buy one, get one free for bananas
         assertEquals(expectedTotalPrice, checkout.costOfFruit(input));
     }
 
