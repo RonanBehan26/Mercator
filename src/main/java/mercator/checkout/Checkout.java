@@ -10,15 +10,20 @@ public class Checkout {
             return 0; // Return 0 if input is null
         }
 
-        double totalPrice = 0;
+        //Now we want to count our fruit so that we can put on the offers
+        int noOfApples = 0;
+        int noOfOranges = 0;
 
         for(String fruit: input){
             if(fruit.equals("Apple")){
-                totalPrice+= APPLE_PRICE;
+                noOfApples++;
             }else if(fruit.equals("Orange")){
-                totalPrice+= ORANGE_PRICE;
+                noOfOranges++;
             }
         }
+
+        double totalPrice = ((double) noOfApples/2 + noOfApples%2) * APPLE_PRICE + //buy 1 get 1 free for apples + remainder
+                (((double) noOfOranges/3 * 2) + noOfOranges%3) * ORANGE_PRICE;   //3 for the price of 2 for oranges + remainder
 
         return totalPrice;
     }
